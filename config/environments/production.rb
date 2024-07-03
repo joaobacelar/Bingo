@@ -32,6 +32,7 @@ Rails.application.configure do
 
   config.active_record.dump_schema_after_migration = false
 
+  config.hosts << "rails-production-81d5.up.railway.app"
   config.hosts << "appbingo.up.railway.app"
   config.hosts << "meubingo.up.railway.app:8080"
 end
