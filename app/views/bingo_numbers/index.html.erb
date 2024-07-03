@@ -1,0 +1,50 @@
+<h1 class="centered">CARTELA BRANCA</h1>
+
+<div class="form-container centered">
+  <%= form_with url: bingo_numbers_path, method: :get, local: true do %>
+    <label for="search_number">Digite o número sorteado:</label>
+    <%= text_field_tag :search_number %>
+    <%= submit_tag "Procurar" %>
+  <% end %>
+  <%= form_with url: clear_bingo_numbers_path, method: :patch, local: true do %>
+    <%= submit_tag "Limpar" %>
+  <% end %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>B</th>
+      <th>I</th>
+      <th>N</th>
+      <th>G</th>
+      <th>O</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% (1..15).each do |i| %>
+      <tr>
+        <td class="<%= 'marked' if @bingo_numbers.find_by(number: i)&.marked %>">
+          <%= i %>
+        <!--  <%= button_to 'Marcar', mark_bingo_number_path(@bingo_numbers.find_by(number: i)), method: :patch %>-->
+        </td>
+        <td class="<%= 'marked' if @bingo_numbers.find_by(number: i+15)&.marked %>">
+          <%= i + 15 %>
+          <!--<%= button_to 'Marcar', mark_bingo_number_path(@bingo_numbers.find_by(number: i+15)), method: :patch %>-->
+        </td>
+        <td class="<%= 'marked' if @bingo_numbers.find_by(number: i+30)&.marked %>">
+          <%= i + 30 %>
+        <!--  <%= button_to 'Marcar', mark_bingo_number_path(@bingo_numbers.find_by(number: i+30)), method: :patch %>-->
+        </td>
+        <td class="<%= 'marked' if @bingo_numbers.find_by(number: i+45)&.marked %>">
+          <%= i + 45 %>
+         <!-- <%= button_to 'Marcar', mark_bingo_number_path(@bingo_numbers.find_by(number: i+45)), method: :patch %>-->
+        </td>
+        <td class="<%= 'marked' if @bingo_numbers.find_by(number: i+60)&.marked %>">
+          <%= i + 60 %>
+         <!-- <%= button_to 'Marcar', mark_bingo_number_path(@bingo_numbers.find_by(number: i+60)), method: :patch %>-->
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

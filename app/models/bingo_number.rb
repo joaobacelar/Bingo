@@ -1,0 +1,2 @@
+class BingoNumber < ApplicationRecord
+end
